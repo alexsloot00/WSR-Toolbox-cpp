@@ -12,6 +12,15 @@ from plotly.subplots import make_subplots
 import pandas as pd
 
 
+"""
+Visualization modified by: Alex Sloot 18-05-2023
+In this directory:
+~/WSR_Project/WSR-Toolbox-cpp/scripts
+run the following line to visualize a file.
+python3 visualize_aoa_profile.py --file ~/WSR_Project/WSR-Toolbox-cpp/debug/tx1_aoa_profile_10cm_1.csv --nphi 180 --ntheta 90
+"""
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--file", help="AOA profile csv file")
@@ -36,26 +45,33 @@ def main():
     # Modify different axis fonts for better visibility
     fig.update_layout(
         title="AOA profile",
+        scene_camera_eye=dict(x=-0.8, y=-2, z=0.6),
         scene=dict(
-            xaxis_title="Azimuth angle(Degrees)",
+            xaxis_title="Azimuth angle (degrees)",
             yaxis_title="Elevation angle (degrees)",
-            zaxis_title="Estimated spectrum (-)",
+            zaxis_title="Estimated spectrum",
         ),
-        font=dict(size=20),
+        font=dict(size=50),
+        title_font=dict(size=50),
     )
+
+    # Figure on the left (surface)
+    fig.update_scenes(
+        xaxis=dict(tickfont=dict(size=20), titlefont=dict(size=35)),
+        yaxis=dict(tickfont=dict(size=20), titlefont=dict(size=35)),
+        zaxis=dict(tickfont=dict(size=20), titlefont=dict(size=35)),
+    )
+
+    # Figure on the right (heatmap)
     fig.update_xaxes(
-        title_text="Azimuth angle(Degrees)",
+        title_text="Azimuth angle(degrees)",
         row=1,
         col=2,
-        tickfont=dict(size=50),
-        title_font=dict(size=50),
     )
     fig.update_yaxes(
         title_text="Elevation angle (degrees)",
         row=1,
         col=2,
-        tickfont=dict(size=50),
-        title_font=dict(size=50),
     )
 
     fig.show()
