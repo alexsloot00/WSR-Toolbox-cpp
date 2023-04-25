@@ -1,5 +1,5 @@
 # WSR-Toolbox-cpp
-Core C++ code repo for WSR toolbox with Cython wrapper.
+This is a forked and slightly modified repository from [the original C++ WSR toolbox](https://github.com/Harvard-REACT/WSR-Toolbox-cpp).
 
 ## Supported Environments
 
