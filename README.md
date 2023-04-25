@@ -10,15 +10,11 @@ Core C++ code repo for WSR toolbox with Cython wrapper.
 - [ ] TX2
 
 ### C++ version tested and supported
-- ~~[ ] c++11~~
 - [x] c++14
 - [x] c++17
 - [ ] c++20
 
 ### Python version tested
-- ~~[ ] python 3.5~~
-- ~~[ ] python 3.6~~
-- [x] python 3.7
 - [x] python 3.8
 
 ### GCC version tested
@@ -27,18 +23,18 @@ Core C++ code repo for WSR toolbox with Cython wrapper.
 
 ## Setup instructions
 
-1. Create a directory named WSR_Project and clone the repository in that directory.
+1. In the home directory (~/), create a directory named WSR_Project and clone the repository in that directory.
 
 2. Install python 3.7 (minimum supported version for using visualization scripts) and make it default version
 ```
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt update
-sudo apt install python3.7 python3.7-tk python3-pip python3.7-dev python3-gdbm cmake
+sudo apt install python3.8 python3.8-tk python3-pip python3.8-dev python3-gdbm cmake
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1
-sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 2
 sudo update-alternatives --config python3
 ```
-Select python3.7 as the default version.
+Select python3.8 as the default version.
 
 3. Install the python dependency packages
 ```
@@ -131,7 +127,7 @@ All the data files pertaining to visualization are generated in the **debug** di
 2. Packet distriution along robots's displacement: Shows if the WiFi packets are distributed uniformly during robot motion or whether there are substntial packet loss
 3. Angle-of-Arrival profile
 
-An example of the above plots is show in the [wiki here]()
+An example of the above plots is shown [https://github.com/alexsloot00/WiFi-based-landmark-estimation/blob/main/Figures/AOA_10cm_1.png](here).
 
 
 1. To visualize the latest data generated in the debug directory use the following
@@ -148,25 +144,4 @@ For example to visualize the data for tx2, tx3 and tx4 (as per the details in th
 ```
 e.g.
 ./scripts/viz_data.sh debug/ 'tx2 tx3 tx4' 2D 
-```
-
-To use matlab visualizer (recommended for offline testing), run the following script instead
-```
-./scripts/viz_data.sh debug/ 'tx2 tx3 tx4' 2D matlab
-```
-
-Note :If the matlab viewer is used for visualizing the AOA profile, then make sure that the matlab api for python has be installed ([reference](https://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html)).
-
-
-### Testing Trajectory data
-Go to the scripts directory
-
-1. Optitrack Mocap data
-```
-python3 main.py --f ../data/mocap_data_a.txt_2020-02-29_171359.txt --mocap_id 102 --parser_type optitrack
-```
-
-2. T265 data
-```
-python3 main.py --f ../data/mocap_data_a.txt_2020-02-29_171359.txt --parser_type t265
 ```
